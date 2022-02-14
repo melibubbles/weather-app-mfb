@@ -59,13 +59,20 @@ li {
   padding: 0;
 }
 
+small {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 80%;
+  font-weight: normal;
+  text-align: left;
+}
+
 .weather-app {
   background: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/025/504/original/rainbow-bubbles.jpg?1642964274)
     no-repeat center center fixed;
   background-size: cover;
   border: 1px solid #dadde1;
   padding: 30px;
-  margin: 20px auto;
+  margin: 20px 0;
   border-radius: 10px;
   max-width: 600px;
 }
