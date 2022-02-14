@@ -79,6 +79,18 @@ li {
   padding: 0;
 }
 
+.btn-primary {
+  background-color: rgb(209, 59, 209);
+  border-color: rgb(209, 59, 209);
+}
+
+.btn-primary.active,
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: rgb(153, 19, 153);
+  border-color: rgb(145, 11, 145);
+}
+
 .btn-space {
   margin: 10px 0;
 }
