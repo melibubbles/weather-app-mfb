@@ -1,0 +1,110 @@
+body {
+  font-family: "Spline Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  color: rgb(153, 19, 153);
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+form {
+  color: rgb(153, 19, 153);
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+h2 {
+  color: rgb(153, 19, 153);
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+h4 {
+  color: rgb(100, 100, 100);
+  font-size: 17px;
+  font-weight: 400px;
+  line-height: 30px;
+}
+
+p {
+  color: rgb(100, 100, 100);
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+h5 {
+  color: #0a58ca;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+li {
+  color: rgb(100, 100, 100);
+  font-size: 17px;
+  font-weight: normal;
+  padding: 0;
+}
+
+.weather-app {
+  background: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/025/504/original/rainbow-bubbles.jpg?1642964274)
+    no-repeat center center fixed;
+  background-size: cover;
+  border: 1px solid #dadde1;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 10px;
+  max-width: 600px;
+}
+
+.city-temperature,
+.current-weather {
+  padding: 5px 0;
+}
+
+.btn-group {
+  padding: 0;
+}
+
+.btn-space {
+  margin: 10px 0;
+}
+
+.forecast-button {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  font-size: 18px;
+  padding: 10px 0;
+  width: 120px;
+  height: 50px;
+}
+
+.card {
+  background: transparent;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.temperature {
+  color: rgb(153, 19, 153);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.units {
+  position: relative;
+  top: -12px;
+}
