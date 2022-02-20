@@ -12,12 +12,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-form {
-  color: rgb(153, 19, 153);
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
 h2 {
   color: rgb(153, 19, 153);
   font-weight: bold;
@@ -101,6 +95,17 @@ small {
 .weather-temperature .units {
   position: relative;
   top: -42px;
+}
+
+.button-icon {
+  font-size: 1.5em;
+  position: relative;
+  top: 4px;
+}
+
+#current-location-button {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .btn-group {
