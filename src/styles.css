@@ -19,14 +19,14 @@ h2 {
 }
 
 h4 {
-  color: rgb(100, 100, 100);
+  color: rgb(63, 61, 61);
   font-size: 17px;
   font-weight: 400px;
   line-height: 30px;
 }
 
 p {
-  color: rgb(100, 100, 100);
+  color: rgb(63, 61, 61);
   font-size: 13px;
   margin: 5px 0;
 }
@@ -47,7 +47,7 @@ ul {
 }
 
 li {
-  color: rgb(100, 100, 100);
+  color: rgb(63, 61, 61);
   font-size: 17px;
   font-weight: normal;
   padding: 0;
@@ -92,6 +92,11 @@ small {
   line-height: 1;
 }
 
+.weather-temperature .active {
+  color: rgb(63, 61, 61);
+  cursor: default;
+}
+
 .weather-temperature .units {
   position: relative;
   top: -42px;
@@ -100,7 +105,7 @@ small {
 .button-icon {
   font-size: 1.5em;
   position: relative;
-  top: 4px;
+  top: 3px;
 }
 
 #current-location-button {
