@@ -1,4 +1,5 @@
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
@@ -7,7 +8,6 @@ function formatDate(date) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-
   let days = [
     "Sunday",
     "Monday",
@@ -17,28 +17,32 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-  let currentDay = days[date.getDay()];
+  let day = days[date.getDay()];
 
-  return `${currentDay} ${hours}:${minutes}`;
+  return `${day} ${hours}:${minutes}`;
 }
 
 function showWeather(response) {
   console.log(response.data);
+
+  let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city");
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
+  let dateElement = document.querySelector("#date");
+
   let celsius = Math.round(parseFloat(response.data.main.temp) - 273.15);
   let fahrenheit = Math.round(
     (parseFloat(response.data.main.temp) - 273.15) * 1.8 + 32
   );
 
-  document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = celsius;
-  document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
-  document.querySelector(
-    "#humidity"
-  ).innerHTML = `${response.data.main.humidity}%`;
-  document.querySelector("#wind").innerHTML = `${Math.round(
-    response.data.wind.speed
-  )} km/h`;
+  temperatureElement.innerHTML = celsius;
+  cityElement.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = `${response.data.main.humidity}%`;
+  windElement.innerHTML = `${Math.round(response.data.wind.speed)} km/h`;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 
 function convertToFahrenheit(event) {
@@ -80,9 +84,6 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-let dateElement = document.querySelector("#date");
-let currentTime = new Date();
-dateElement.innerHTML = formatDate(currentTime);
 let cityForm = document.querySelector("#search-form");
 cityForm.addEventListener("submit", handleSubmit);
 let fahrenheit = document.querySelector("#fahrenheit-link");
@@ -91,4 +92,5 @@ let celsius = document.querySelector("#celsius-link");
 celsius.addEventListener("click", convertToCelsius);
 let currentLocation = document.querySelector("#current-location-button");
 currentLocation.addEventListener("click", getCurrentLocation);
+
 searchCity("Tokyo");

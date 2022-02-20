@@ -80,6 +80,10 @@ small {
   padding: 20px;
 }
 
+.weather-temperature {
+  margin-bottom: 10px;
+}
+
 .weather-temperature img {
   margin-right: 10px;
   float: left;
@@ -131,6 +135,10 @@ small {
   background: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
+}
+
+#description::first-letter {
+  text-transform: uppercase;
 }
 
 #humidity,
