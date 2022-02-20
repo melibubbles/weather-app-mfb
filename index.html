@@ -58,29 +58,31 @@
               </div>
             </div>
           </form>
-          <div class="row city-temperature">
+          <h2 id="city">City</h2>
+          <div class="row">
             <div class="col-6">
-              <h2 id="city">City</h2>
+              <div class="clearfix weather-temperature">
+                <img
+                  src="images/clipart-sun.png"
+                  alt="sun image"
+                  width="100"
+                  class="float-left"
+                />
+                <div class="float-left">
+                  <strong id="temperature">19</strong>
+                  <span class="units">
+                    <a href="#" id="celsius-link">°C</a> |
+                    <a href="#" id="fahrenheit-link">°F</a>
+                  </span>
+                </div>
+              </div>
             </div>
-            <div class="col-6">
-              <h2 id="temperature">19</h2>
-              <span class="units">
-                <a href="#" id="celsius-link">°C</a> |
-                <a href="#" id="fahrenheit-link">°F</a>
-              </span>
-            </div>
-          </div>
-          <div class="row current-weather">
             <div class="col-6">
               <ul>
                 <li id="date">Day hh:mm</li>
-                <li id="description">Cloudy with a chance of meatballs</li>
-              </ul>
-            </div>
-            <div class="col-6">
-              <ul>
-                <li id="humidity">50%</li>
-                <li id="wind">5 km/h</li>
+                <li id="description"></li>
+                <li>Humidity: <span id="humidity"></span></li>
+                <li>Wind: <span id="wind"></span></li>
               </ul>
             </div>
           </div>
