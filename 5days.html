@@ -19,6 +19,14 @@
       rel="stylesheet"
     />
     <script
+      type="module"
+      src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"
+    ></script>
+    <script
       src="https://kit.fontawesome.com/42948c89c3.js"
       crossorigin="anonymous"
     ></script>
@@ -26,199 +34,203 @@
   </head>
   <body>
     <div class="container">
-      <div class="weather-app">
-        <h1>Bubbles Weather App</h1>
-        <form class="search-form" id="search-form">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <h1>Bubbles Weather App</h1>
+          <form class="mb-3" id="search-form">
+            <div class="row">
+              <div class="col-7">
+                <input
+                  type="search"
+                  placeholder="Search for a city"
+                  autofocus="on"
+                  autocomplete="off"
+                  id="city-input"
+                  class="form-control shadow-sm"
+                />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="form-control btn btn-primary shadow-sm"
+                />
+              </div>
+              <div class="col-2">
+                <button
+                  type="button"
+                  class="btn btn-secondary w-100"
+                  id="current-location-button"
+                >
+                  <span class="button-icon">
+                    <ion-icon name="pin"></ion-icon>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </form>
+          <h2 id="city"></h2>
           <div class="row">
             <div class="col-6">
-              <input
-                type="search"
-                placeholder="Search for a city"
-                autofocus="on"
-                autocomplete="off"
-                id="city-input"
-                class="form-control shadow-sm"
-              />
-            </div>
-            <div class="col-3">
-              <input
-                type="submit"
-                value="Search"
-                class="form-control btn btn-primary shadow-sm"
-              />
-            </div>
-            <div class="col-3">
-              <button
-                class="btn btn-secondary w-100"
-                id="current-location-button"
-              >
-                Current
-              </button>
-            </div>
-          </div>
-        </form>
-        <div class="row city-temperature">
-          <div class="col-6">
-            <h2 id="city">City</h2>
-          </div>
-          <div class="col-6">
-            <h2 id="temperature">19</h2>
-            <span class="units">
-              <a href="#" id="celsius-link">°C</a> |
-              <a href="#" id="fahrenheit-link">°F</a>
-            </span>
-          </div>
-        </div>
-        <div class="row current-weather">
-          <div class="col-6">
-            <ul>
-              <li id="date">Day hh:mm</li>
-              <li id="description">Cloudy with a chance of meatballs</li>
-            </ul>
-          </div>
-          <div class="col-6">
-            <ul>
-              <li id="humidity">50%</li>
-              <li id="wind">5 km/h</li>
-            </ul>
-          </div>
-        </div>
-        <p>Updated 9 minutes ago</p>
-        <div class="row">
-          <div class="btn-group">
-            <div class="col-4 text-center">
-              <a
-                href="index.html"
-                button
-                type="button"
-                class="btn btn-primary btn-space forecast-button"
-                aria-current="page"
-                >Today
-              </a>
-            </div>
-            <div class="col-4 text-center">
-              <a
-                href="tomorrow.html"
-                button
-                type="button"
-                class="btn btn-primary btn-space forecast-button"
-                >Tomorrow</a
-              >
-            </div>
-            <div class="col-4 text-center">
-              <a
-                href="5days.html"
-                button
-                type="button"
-                class="btn btn-primary active btn-space forecast-button"
-                >5 Days</a
-              >
-            </div>
-          </div>
-        </div>
-        <br />
-        <br />
-        <div class="row">
-          <div class="card-group">
-            <div class="col">
-              <div class="card text-center">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    Fri
-                    <br />
-                    June 11
-                    <br />
-                    <i class="fas fa-sun"></i>
-                    <br />
-                    25°C
-                    <br />
-                    <small>16°C</small>
-                  </h4>
+              <div class="clearfix weather-temperature">
+                <img src="" alt="sunny" id="icon" class="float-left" />
+                <div class="float-left">
+                  <strong id="temperature"></strong>
+                  <span class="units">
+                    <a href="#" id="celsius-link" class="active">°C</a> |
+                    <a href="#" id="fahrenheit-link">°F</a>
+                  </span>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card text-center">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    Sat
-                    <br />
-                    June 12
-                    <br />
-                    <i class="fas fa-cloud"></i>
-                    <br />
-                    20°C
-                    <br />
-                    <small>16°C</small>
-                  </h4>
-                </div>
+            <div class="col-6">
+              <ul>
+                <li id="description"></li>
+                <li>Humidity: <span id="humidity"></span></li>
+                <li>Wind: <span id="wind"></span></li>
+              </ul>
+            </div>
+          </div>
+          <p>Last update: <span id="date"></span></p>
+          <div class="row">
+            <div class="btn-group">
+              <div class="col-4 text-center">
+                <a
+                  href="index.html"
+                  button
+                  type="button"
+                  class="btn btn-primary btn-space forecast-button"
+                  aria-current="page"
+                  >Today
+                </a>
+              </div>
+              <div class="col-4 text-center">
+                <a
+                  href="tomorrow.html"
+                  button
+                  type="button"
+                  class="btn btn-primary btn-space forecast-button"
+                  >Tomorrow</a
+                >
+              </div>
+              <div class="col-4 text-center">
+                <a
+                  href="5days.html"
+                  button
+                  type="button"
+                  class="btn btn-primary active btn-space forecast-button"
+                  >5 Days</a
+                >
               </div>
             </div>
-            <div class="col">
-              <div class="card text-center">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    Sun
-                    <br />
-                    June 13
-                    <br />
-                    <i class="fas fa-cloud-rain"></i>
-                    <br />
-                    20°C
-                    <br />
-                    <small>16°C</small>
-                  </h4>
+          </div>
+          <br />
+          <br />
+          <div class="row">
+            <div class="card-group">
+              <div class="col">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      Fri
+                      <br />
+                      June 11
+                      <br />
+                      <i class="fas fa-sun"></i>
+                      <br />
+                      25°C
+                      <br />
+                      <small>16°C</small>
+                    </h4>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col">
-              <div class="card text-center">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    Mon
-                    <br />
-                    June 14
-                    <br />
-                    <i class="fas fa-cloud-sun"></i>
-                    <br />
-                    22°C
-                    <br />
-                    <small>16°C</small>
-                  </h4>
+              <div class="col">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      Sat
+                      <br />
+                      June 12
+                      <br />
+                      <i class="fas fa-cloud"></i>
+                      <br />
+                      20°C
+                      <br />
+                      <small>16°C</small>
+                    </h4>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col">
-              <div class="card text-center">
-                <div class="card-body">
-                  <h4 class="card-title">
-                    Tue
-                    <br />
-                    June 15
-                    <br />
-                    <i class="fas fa-sun"></i>
-                    <br />
-                    25°C
-                    <br />
-                    <small>16°C</small>
-                  </h4>
+              <div class="col">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      Sun
+                      <br />
+                      June 13
+                      <br />
+                      <i class="fas fa-cloud-rain"></i>
+                      <br />
+                      20°C
+                      <br />
+                      <small>16°C</small>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      Mon
+                      <br />
+                      June 14
+                      <br />
+                      <i class="fas fa-cloud-sun"></i>
+                      <br />
+                      22°C
+                      <br />
+                      <small>16°C</small>
+                    </h4>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      Tue
+                      <br />
+                      June 15
+                      <br />
+                      <i class="fas fa-sun"></i>
+                      <br />
+                      25°C
+                      <br />
+                      <small>16°C</small>
+                    </h4>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <small>
+          This project was coded by
+          <a href="https://www.linkedin.com/in/melissafb/" target="_blank"
+            >Melissa FB</a
+          >
+          and is
+          <a
+            href="https://github.com/melibubbles/weather-app-mfb"
+            target="_blank"
+            >open-sourced on GitHub</a
+          >
+          and hosted on
+          <a href="http://netlify.com/" target="_blank">Netlify</a>
+        </small>
       </div>
-      <small>
-        This project was coded by
-        <a href="https://www.linkedin.com/in/melissafb/" target="_blank"
-          >Melissa FB</a
-        >
-        and is
-        <a href="https://github.com/melibubbles/weather-app-mfb" target="_blank"
-          >open-sourced on GitHub</a
-        >
-        and hosted on <a href="http://netlify.com/" target="_blank">Netlify</a>
-      </small>
     </div>
     <script src="src/script.js"></script>
   </body>
