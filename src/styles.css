@@ -19,9 +19,10 @@ form {
 }
 
 h2 {
+  display: inline;
   color: rgb(153, 19, 153);
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 0;
 }
 
 h4 {
@@ -66,15 +67,18 @@ small {
   text-align: left;
 }
 
+.weather-app-wrapper {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
 .weather-app {
   background: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/025/504/original/rainbow-bubbles.jpg?1642964274)
     no-repeat center center fixed;
   background-size: cover;
   border: 1px solid #dadde1;
-  padding: 30px;
-  margin: 20px 0;
   border-radius: 10px;
-  max-width: 600px;
+  padding: 20px;
 }
 
 .city-temperature,
@@ -114,13 +118,6 @@ small {
   background: transparent;
   border-top-color: transparent;
   border-bottom-color: transparent;
-}
-
-.temperature {
-  color: rgb(153, 19, 153);
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 15px;
 }
 
 .units {
