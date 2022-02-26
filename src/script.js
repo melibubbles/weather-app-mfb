@@ -22,6 +22,49 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `
+      <div class="row">
+        <div class="card-group">
+    `;
+
+  let days = ["Sun", "Mon", "Tue", "Wed"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col">
+        <div class="card text-center">
+          <div class="card-body">
+            <h4 class="card-title">
+              ${day}
+              <br />
+              June 11
+              <br />
+              <i class="fas fa-sun"></i>
+              <br />
+              25°C
+              <br />
+              <small>16°C</small>          
+            </h4>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  forecastHTML =
+    forecastHTML +
+    `
+      </div>
+        </div>
+    `;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 function showWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city");
@@ -87,6 +130,8 @@ function getCurrentLocation(event) {
 }
 
 let celsiusTemperature = null;
+
+showForecast();
 
 let cityForm = document.querySelector("#search-form");
 cityForm.addEventListener("submit", handleSubmit);
