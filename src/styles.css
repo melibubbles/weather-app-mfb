@@ -145,6 +145,13 @@ small {
   border-color: transparent;
 }
 
+.weather-forecast {
+  color: rgb(63, 61, 61);
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 30px;
+}
+
 #description::first-letter {
   text-transform: uppercase;
 }
