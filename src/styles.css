@@ -13,9 +13,9 @@ h1 {
 }
 
 h2 {
-  color: rgb(153, 19, 153);
+  color: rgb(63, 61, 61);
   font-weight: bold;
-  margin-bottom: 20px;
+  margin: 10px 0;
 }
 
 h4 {
@@ -66,8 +66,7 @@ small {
 }
 
 .weather-app {
-  background: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/025/504/original/rainbow-bubbles.jpg?1642964274)
-    no-repeat center center fixed;
+  background: rgba(22, 211, 195, 0.6);
   background-size: cover;
   border: 1px solid #dadde1;
   border-radius: 10px;
@@ -86,7 +85,7 @@ small {
 }
 
 .weather-temperature strong {
-  color: rgb(153, 19, 153);
+  color: rgb(63, 61, 61);
   font-size: 75px;
   font-weight: 400;
   line-height: 1;
@@ -143,8 +142,7 @@ small {
 
 .card {
   background: transparent;
-  border-top-color: transparent;
-  border-bottom-color: transparent;
+  border-color: transparent;
 }
 
 #description::first-letter {
