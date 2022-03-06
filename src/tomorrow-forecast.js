@@ -34,18 +34,18 @@ function formatMonth(timestamp) {
   let date = new Date(timestamp * 1000);
   let month = date.getMonth();
   let months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
+    "January",
+    "February",
+    "March",
+    "April",
     "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
   return months[month];
@@ -59,57 +59,76 @@ function formatDayNumber(timestamp) {
 }
 
 function showForecast(response) {
-  let forecast = response.data.daily;
-  let forecastElement = document.querySelector("#five-day-forecast");
+  let tomorrowDate = document.querySelector("#tomorrow-date");
+  let forecastElement = document.querySelector("#tomorrow-forecast");
   let forecastHTML = `
       <div class="row">
         <div class="card-group">
-    `;
-
-  console.log(response.data.daily);
-
-  forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
-      forecastHTML =
-        forecastHTML +
-        `
-      <div class="col">
-        <div class="card text-center">
-          <div class="card-body">
-            <div class="card-title">
-              <div class="day-week">
-                ${formatDay(forecastDay.dt)}
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Morning
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(response.data.daily[1].temp.morn)}°C
+                  </div>
+                </div>
               </div>
-              <div class="month-day">
-                ${formatMonth(forecastDay.dt)} ${formatDayNumber(
-          forecastDay.dt
-        )}
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Afternoon
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(response.data.daily[1].temp.day)}°C
+                  </div>
+                </div>
               </div>
-              <div class="forecast-icon">
-                <img src="http://openweathermap.org/img/wn/${
-                  forecastDay.weather[0].icon
-                }@2x.png" alt="" width="45">
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Evening
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(response.data.daily[1].temp.eve)}°C
+                  </div>
+                </div>
               </div>
-              <div class="max-temp">
-                ${Math.round(forecastDay.temp.max)}°C
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Night
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(response.data.daily[1].temp.night)}°C
+                  </div>
+                </div>
               </div>
-              <div class="min-temp">
-                <small>${Math.round(forecastDay.temp.min)}°C</small>
-              </div>          
             </div>
           </div>
         </div>
       </div>
     `;
-    }
-  });
 
-  forecastHTML =
-    forecastHTML +
-    `
-      </div>
-        </div>
-    `;
+  console.log(response.data.daily[1]);
+
+  tomorrowDate.innerHTML = `${formatMonth(
+    response.data.daily[1].dt
+  )} ${formatDayNumber(response.data.daily[1].dt)}`;
   forecastElement.innerHTML = forecastHTML;
 }
 
