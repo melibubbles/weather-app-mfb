@@ -328,6 +328,9 @@ function searchCity(city) {
 
 function handleSubmit(event) {
   event.preventDefault();
+  tomorrowForecastButton.classList.remove("active");
+  fiveDayForecastButton.classList.remove("active");
+  todayForecastButton.classList.add("active");
   let cityInputElement = document.querySelector("#city-input");
   searchCity(cityInputElement.value);
 }
@@ -340,6 +343,9 @@ function searchLocation(position) {
 
 function getCurrentLocation(event) {
   event.preventDefault();
+  tomorrowForecastButton.classList.remove("active");
+  fiveDayForecastButton.classList.remove("active");
+  todayForecastButton.classList.add("active");
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
