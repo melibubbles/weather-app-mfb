@@ -58,18 +58,154 @@ function formatDayNumber(timestamp) {
   return dayNumber;
 }
 
-function showForecast(response) {
+function showTodayForecast(response) {
+  let todayForecast = response.data.daily[0];
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `
+      <div class="row">
+        <div class="card-group">
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Morning
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(todayForecast.temp.morn)}°C
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Afternoon
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(todayForecast.temp.day)}°C
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Evening
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(todayForecast.temp.eve)}°C
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Night
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(todayForecast.temp.night)}°C
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function showTomorrowForecast(response) {
+  let tomorrowForecast = response.data.daily[1];
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `
+      <div class="row">
+        <div class="card-group">
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Morning
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(tomorrowForecast.temp.morn)}°C
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Afternoon
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(tomorrowForecast.temp.day)}°C
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Evening
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(tomorrowForecast.temp.eve)}°C
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="card text-center">
+              <div class="card-body">
+                <div class="card-title">
+                  <div class="time-of-day">
+                    Night
+                  </div>
+                  <div class="time-temp">
+                    ${Math.round(tomorrowForecast.temp.night)}°C
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function showFiveDayForecast(response) {
   let forecast = response.data.daily;
-  let forecastElement = document.querySelector("#five-day-forecast");
+  let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `
       <div class="row">
         <div class="card-group">
     `;
 
-  console.log(response.data.daily);
-
   forecast.forEach(function (forecastDay, index) {
-    if (index < 6) {
+    if (index < 5) {
       forecastHTML =
         forecastHTML +
         `
@@ -113,10 +249,47 @@ function showForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
+function activateTodayForecastButton(event) {
+  event.preventDefault();
+  tomorrowForecastButton.classList.remove("active");
+  fiveDayForecastButton.classList.remove("active");
+  todayForecastButton.classList.add("active");
+
+  let apiKey = "9b38a1b5ab26f73e5bf09125bd340224";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showTodayForecast);
+}
+
+function activateTomorrowForecastButton(event) {
+  event.preventDefault();
+  todayForecastButton.classList.remove("active");
+  fiveDayForecastButton.classList.remove("active");
+  tomorrowForecastButton.classList.add("active");
+
+  let apiKey = "9b38a1b5ab26f73e5bf09125bd340224";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showTomorrowForecast);
+}
+
+function activateFiveDayForecastButton(event) {
+  event.preventDefault();
+  todayForecastButton.classList.remove("active");
+  tomorrowForecastButton.classList.remove("active");
+  fiveDayForecastButton.classList.add("active");
+
+  let apiKey = "9b38a1b5ab26f73e5bf09125bd340224";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(showFiveDayForecast);
+}
+
 function getForecast(coordinates) {
   let apiKey = "9b38a1b5ab26f73e5bf09125bd340224";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showForecast);
+
+  axios.get(apiUrl).then(showTodayForecast);
 }
 
 function showWeather(response) {
@@ -128,9 +301,9 @@ function showWeather(response) {
   let dateElement = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
 
-  console.log(response.data);
-
   celsiusTemperature = response.data.main.temp;
+  latitude = response.data.coord.lat;
+  longitude = response.data.coord.lon;
 
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   cityElement.innerHTML = response.data.name;
@@ -170,10 +343,25 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
+let latitude = null;
+let longitude = null;
+
 let cityForm = document.querySelector("#search-form");
 cityForm.addEventListener("submit", handleSubmit);
 
 let currentLocation = document.querySelector("#current-location-button");
 currentLocation.addEventListener("click", getCurrentLocation);
+
+let todayForecastButton = document.querySelector("#today-button");
+todayForecastButton.addEventListener("click", activateTodayForecastButton);
+
+let tomorrowForecastButton = document.querySelector("#tomorrow-button");
+tomorrowForecastButton.addEventListener(
+  "click",
+  activateTomorrowForecastButton
+);
+
+let fiveDayForecastButton = document.querySelector("#five-days-button");
+fiveDayForecastButton.addEventListener("click", activateFiveDayForecastButton);
 
 searchCity("Tokyo");
