@@ -38,7 +38,7 @@ small {
 }
 
 .weather-app-wrapper {
-  max-width: 600px;
+  max-width: 650px;
   margin: 30px auto;
 }
 
@@ -55,7 +55,6 @@ small {
 }
 
 .weather-temperature img {
-  margin-right: 10px;
   height: 95px;
   width: 95px;
 }
@@ -127,8 +126,9 @@ small {
   font-size: 14px;
   margin-top: 10px;
   margin-left: 8px;
+  margin-right: 8px;
   line-height: 18px;
-  text-align: left;
+  text-align: center;
   color: rgba(39, 33, 66, 0.7);
 }
 
