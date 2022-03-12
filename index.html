@@ -64,26 +64,30 @@
               </div>
             </div>
           </form>
-          <h2 id="city"></h2>
-          <div class="row current-weather">
-            <div class="col-6">
-              <div class="clearfix weather-temperature">
-                <img src="" alt="weather-icon" id="icon" class="float-left" />
-                <div class="float-left">
-                  <strong id="temperature"></strong>
-                  <span class="units">°C</span>
+          <div class="weather-info">
+            <div class="row current-weather">
+              <div class="col-6">
+                <h1 id="city"></h1>
+                <ul>
+                  <li id="description"></li>
+                  <li>Humidity: <span id="humidity"></span></li>
+                  <li>Wind: <span id="wind"></span></li>
+                </ul>
+              </div>
+              <div class="col-6">
+                <div class="weather-temperature d-flex justify-content-end">
+                  <img src="" alt="weather-icon" id="icon" class="float-left" />
+                  <div class="float-left">
+                    <strong id="temperature"></strong>
+                    <span class="units">°C</span>
+                  </div>
+                </div>
+                <div class="time-last-update d-flex justify-content-end">
+                  <p>Last update: <span id="date"></span></p>
                 </div>
               </div>
             </div>
-            <div class="col-6">
-              <ul>
-                <li id="description"></li>
-                <li>Humidity: <span id="humidity"></span></li>
-                <li>Wind: <span id="wind"></span></li>
-              </ul>
-            </div>
           </div>
-          <p>Last update: <span id="date"></span></p>
           <div class="row">
             <div class="btn-group">
               <div class="col-4 text-center">
