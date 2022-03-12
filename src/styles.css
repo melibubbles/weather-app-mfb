@@ -148,7 +148,8 @@ small {
 }
 
 #humidity,
-#wind {
+#wind,
+#date {
   color: rgb(153, 19, 153);
   font-weight: 500;
 }
