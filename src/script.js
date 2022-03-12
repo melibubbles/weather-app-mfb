@@ -370,4 +370,4 @@ tomorrowForecastButton.addEventListener(
 let fiveDayForecastButton = document.querySelector("#five-days-button");
 fiveDayForecastButton.addEventListener("click", activateFiveDayForecastButton);
 
-searchCity("Tokyo");
+searchCity("Quebec");

@@ -139,4 +139,5 @@ small {
 #humidity,
 #wind {
   color: rgb(153, 19, 153);
+  font-weight: 500;
 }
