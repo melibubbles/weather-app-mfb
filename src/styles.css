@@ -8,6 +8,7 @@ a {
 
 h1 {
   color: rgb(63, 61, 61);
+  display: inline;
   font-weight: bold;
   margin: 0 0 10px 0;
 }
@@ -52,6 +53,16 @@ small {
 
 .weather-info {
   padding: 20px 0 0 0;
+}
+
+.country {
+  margin-left: 5px;
+  padding: 0.2em 0.6em;
+  border-radius: 30px;
+  color: white;
+  background: rgb(209, 59, 209);
+  position: relative;
+  top: -15px;
 }
 
 .weather-temperature img {
